@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">BndGram</string>
+    <string name="app_title">BndGram</string>
+    <string name="bome">Home</string>
+    <string name="search">Search</string>
+    <string name="add">Add</string>
+    <string name="like">Like</string>
+    <string name="profile">Profile</string>
+</resources>

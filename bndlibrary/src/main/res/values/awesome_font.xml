@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="fa_cog">&#xf013;</string>
+    <string name="fa_bars">&#xf0c9;</string>
+    <string name="fa_paper_plane">&#xf1d8;</string>
+    <string name="fa_search">&#xf002;</string>
+    <string name="fa_cogs">&#xf085;</string>
+    <string name="fa_info_circle">&#xf05a;</string>
+
+</resources>
