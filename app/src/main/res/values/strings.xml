@@ -6,4 +6,14 @@
     <string name="add">Add</string>
     <string name="like">Like</string>
     <string name="profile">Profile</string>
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+    <string name="login">Login</string>
+    <string name="create_account">Create Account</string>
+
+
+
+    <string name="error_username">Fill username</string>
+    <string name="error_password">Fill password</string>
+
 </resources>

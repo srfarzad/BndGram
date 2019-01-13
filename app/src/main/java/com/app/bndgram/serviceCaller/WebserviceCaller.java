@@ -7,6 +7,7 @@ import com.app.bndgram.models.Posts;
 
 import java.util.List;
 
+import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -34,6 +35,26 @@ public class WebserviceCaller {
             @Override
             public void onFailure(Call<List<Posts>> call, Throwable t) {
                 iMessageListener.onError(t.getMessage().toString() + "");
+            }
+        });
+
+
+    }
+
+
+    public void login(String username,String password, IMessageListener iMessageListener){
+
+        Call<ResponseBody> login = apiInterface.login(username, password);
+
+        login.enqueue(new Callback<ResponseBody>() {
+            @Override
+            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                iMessageListener.onSuccessObject(response.body());
+            }
+
+            @Override
+            public void onFailure(Call<ResponseBody> call, Throwable t) {
+                iMessageListener.onError(t.getMessage().toString()+"");
             }
         });
 

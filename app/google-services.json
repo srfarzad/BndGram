@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "79688748507",
+    "firebase_url": "https://bndgram.firebaseio.com",
+    "project_id": "bndgram",
+    "storage_bucket": "bndgram.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:79688748507:android:c70091f8017c66cd",
+        "android_client_info": {
+          "package_name": "com.app.bndgram"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "79688748507-o0082ges098dmsgmgfaott7osaj7fc2e.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.app.bndgram",
+            "certificate_hash": "8e0f8fa2bf31cb50208b48d008d47fb8be8f7e64"
+          }
+        },
+        {
+          "client_id": "79688748507-q4vmp6e0ppj960alfh82fnh404fa7o18.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDgM6qkxYs2I4-KaHohFUamrq3heLgDWfU"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "79688748507-q4vmp6e0ppj960alfh82fnh404fa7o18.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

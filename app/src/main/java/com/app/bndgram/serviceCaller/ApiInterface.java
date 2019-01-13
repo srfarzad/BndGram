@@ -4,6 +4,7 @@ import com.app.bndgram.models.Posts;
 
 import java.util.List;
 
+import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
@@ -18,11 +19,11 @@ public interface ApiInterface {
 
     @FormUrlEncoded
     @POST("register.php")
-    Call<List<Posts>> register(@Field("username") String username , @Field("password") String password );
+    Call<ResponseBody> register(@Field("username") String username , @Field("password") String password );
 
     @FormUrlEncoded
     @POST("login.php")
-    Call<List<Posts>> login(@Field("username") String username , @Field("password") String password  );
+    Call<ResponseBody> login(@Field("username") String username , @Field("password") String password  );
 
 
 

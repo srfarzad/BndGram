@@ -1,5 +1,6 @@
 package com.app.bndgram;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -9,6 +10,7 @@ import android.util.Log;
 import com.app.bndgram.adapter.PostAdapter;
 import com.app.bndgram.models.IMessageListener;
 import com.app.bndgram.models.UserData;
+import com.app.bndgram.service.UpdateService;
 import com.app.bndgram.serviceCaller.WebserviceCaller;
 import com.app.bndlibrary.ui.BaseActivity;
 import com.app.bndlibrary.utils.Logger;
@@ -47,6 +49,10 @@ public class MainActivity extends BaseActivity {
             Logger.Log("","Internet not avaliable");
         }
 
+        Intent intent = new Intent(getApplicationContext(), UpdateService.class);
+        startService(intent);
+
+/*
 
         UserData userData = new UserData();
         userData.id = 2;
@@ -59,15 +65,21 @@ public class MainActivity extends BaseActivity {
         realm.commitTransaction();
 
 
+
         RealmResults<UserData> userData1 = realm.where(UserData.class)
                 .lessThanOrEqualTo("id",1)
                 .findAll();
 
         Log.e("","");
+*/
 
 
-
-
+        Intent intent1 = new Intent();
+        intent1.setClassName("com.app.bndsecond","com.app.bndsecond.MyReciever");
+        intent1.setAction("com.app.bndsecond.MyReciever");
+        intent1.putExtra("id",4);
+        intent1.putExtra("name","Android");
+        sendBroadcast(intent1);
 
 
 
@@ -104,5 +116,6 @@ public class MainActivity extends BaseActivity {
             }
         });
     }
+
 
 }
