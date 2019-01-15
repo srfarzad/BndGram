@@ -22,6 +22,7 @@ import com.app.bndlibrary.location.GPSTracker;
 import com.app.bndlibrary.ui.BaseActivity;
 import com.app.bndlibrary.utils.Logger;
 import com.app.bndlibrary.utils.NetworkState;
+import com.app.bndlibrary.view.EndlessRecyclerViewScrollListener;
 import com.karumi.dexter.Dexter;
 import com.karumi.dexter.PermissionToken;
 import com.karumi.dexter.listener.DexterError;
@@ -48,6 +49,15 @@ public class MainActivity extends BaseActivity {
     double lat,lang;
 
 
+    int page = 0;
+
+    private EndlessRecyclerViewScrollListener scrollListener;
+
+
+    int flag= 0;
+
+    PostAdapter postAdapter;
+
     @Override
     public int setContentView() {
         return R.layout.activity_main;
@@ -59,14 +69,46 @@ public class MainActivity extends BaseActivity {
 
         webserviceCaller = new WebserviceCaller();
 
+
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(
+                getApplicationContext(), LinearLayoutManager.VERTICAL, false
+        );
+
+        recycler_post.setLayoutManager(linearLayoutManager);
+
+
+        scrollListener = new EndlessRecyclerViewScrollListener(linearLayoutManager) {
+            @Override
+            public void onLoadMore(int page, int totalItemsCount, RecyclerView view) {
+                // Triggered only when new data needs to be appended to the list
+                // Add whatever code is needed to append new items to the bottom of the list
+
+                page+=10;
+
+                getPost();
+            }
+        };
+        // Adds the scroll listener to RecyclerView
+        recycler_post.addOnScrollListener(scrollListener);
+
+
+
+
+
+
         if (NetworkState.checkInternetConnection(getApplicationContext())) {
             getPost();
         } else {
             Logger.Log("", "Internet not avaliable");
         }
 
+
+
+
+
+
         Intent intent = new Intent(getApplicationContext(), UpdateService.class);
-        startService(intent);
+       // startService(intent);
 
 /*
 
@@ -101,7 +143,7 @@ public class MainActivity extends BaseActivity {
         // UserComponent component = DaggerUserComponent.builder().userModule(new UserModule()).build();
 
 
-        UserComponent userComponent = DaggerUserComponent.builder().userModule(new UserModule())
+       /* UserComponent userComponent = DaggerUserComponent.builder().userModule(new UserModule())
                 .build();
 
         User user = userComponent.provideUser();
@@ -112,7 +154,7 @@ public class MainActivity extends BaseActivity {
         UserComponent component = DaggerUserComponent.builder().
                 retrofitModule(new RetrofitModule()).build();
 
-
+*/
         // component.provideWebservice().
 
 
@@ -164,17 +206,26 @@ public class MainActivity extends BaseActivity {
 
     public void getPost() {
 
-        webserviceCaller.getAllPosts(0, 10, new IMessageListener() {
+        webserviceCaller.getAllPosts(page, page+10, new IMessageListener() {
             @Override
             public void onSuccess(List list) {
                 Logger.Log("", "");
 
-                recycler_post.setAdapter(new PostAdapter(getApplicationContext(),
-                        list));
 
-                recycler_post.setLayoutManager(new LinearLayoutManager(
-                        getApplicationContext(), LinearLayoutManager.VERTICAL, false
-                ));
+                if(flag==0) {
+
+                    postAdapter = new PostAdapter(getApplicationContext(),
+                            list);
+                    recycler_post.setAdapter(postAdapter);
+                    flag ++;
+                }
+                else {
+
+                    postAdapter.addAll(list);
+                }
+
+
+
 
             }
 

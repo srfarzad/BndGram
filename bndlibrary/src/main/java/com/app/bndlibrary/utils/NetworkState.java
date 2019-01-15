@@ -35,14 +35,6 @@ public class NetworkState {
         }
     }
 
-    public boolean isNetworkConnected() {
-        NetworkInfo info = (NetworkInfo) ((ConnectivityManager) context
-                .getSystemService(Context.CONNECTIVITY_SERVICE))
-                .getActiveNetworkInfo();
-        if (info == null || !info.isConnected()) {
-            return false;
-        }
-        return true;
-    }
+
 
 }

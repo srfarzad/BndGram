@@ -101,4 +101,18 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostViewHolder
             ButterKnife.bind(this, itemView);
         }
     }
+
+    public void addAll(List<Posts> posts){
+
+        postsList.clear();
+        postsList.addAll(posts);
+
+        notifyDataSetChanged();
+
+    }
+
+
+
+
+
 }

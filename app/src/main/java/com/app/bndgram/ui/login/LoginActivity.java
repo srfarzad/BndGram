@@ -25,6 +25,7 @@ import android.widget.TextView;
 import com.app.bndgram.MainActivity;
 import com.app.bndgram.R;
 import com.app.bndgram.ui.map.MapActivity;
+import com.app.bndgram.ui.register.RegisterActivity;
 import com.app.bndlibrary.location.GPSTracker;
 import com.app.bndlibrary.ui.BaseActivity;
 import com.firebase.ui.auth.AuthUI;
@@ -59,6 +60,7 @@ public class LoginActivity extends BaseActivity implements LoginView {
     @BindView(R.id.edt_password) AppCompatEditText edt_password;
     @BindView(R.id.btn_signin) Button btn_signin;
     @BindView(R.id.btn_map) Button btn_map;
+    @BindView(R.id.btn_kotlin) Button btn_kotlin;
     @BindView(R.id.link_create)TextView link_create;
     @BindView(R.id.progress_bar) ProgressBar progress_bar;
 
@@ -100,9 +102,9 @@ public class LoginActivity extends BaseActivity implements LoginView {
     public void btn_signin_click(){
 
 
-       /* loginPresentor.validateInputs(input_username.getText().toString(),
+        loginPresentor.validateInputs(input_username.getText().toString(),
                 edt_password.getText().toString());
-*/
+
        /* firebaseAuth.createUserWithEmailAndPassword("sr.farzad@gmail.com"
         ,"1234567898777")
                 .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
@@ -112,7 +114,7 @@ public class LoginActivity extends BaseActivity implements LoginView {
                         Log.e("","");
 
                     }
-                });*/
+                });
 
 
       /*  firebaseAuth.signInWithEmailAndPassword("sr.farzad@gmail.com"
@@ -126,18 +128,17 @@ public class LoginActivity extends BaseActivity implements LoginView {
 
 
 
-        List<AuthUI.IdpConfig> providers = Arrays.asList(
+      /*  List<AuthUI.IdpConfig> providers = Arrays.asList(
                 new AuthUI.IdpConfig.EmailBuilder().build(),
                 new AuthUI.IdpConfig.PhoneBuilder().build(),
                 new AuthUI.IdpConfig.GoogleBuilder().build());
 
-// Create and launch sign-in intent
         startActivityForResult(
                 AuthUI.getInstance()
                         .createSignInIntentBuilder()
                         .setAvailableProviders(providers)
                         .build(),
-                RC_SIGN_IN);
+                RC_SIGN_IN);*/
 
 
 
@@ -146,6 +147,13 @@ public class LoginActivity extends BaseActivity implements LoginView {
     @OnClick(R.id.btn_map)
     public void btn_map_click(){
         Intent intent = new Intent(getApplicationContext(),MapActivity.class);
+
+        startActivity(intent);
+    }
+
+    @OnClick(R.id.btn_kotlin)
+    public void btn_kotlin_click(){
+        Intent intent = new Intent(getApplicationContext(),RegisterActivity.class);
 
         startActivity(intent);
     }
